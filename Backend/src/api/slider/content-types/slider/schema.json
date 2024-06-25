@@ -4,25 +4,27 @@
   "info": {
     "singularName": "slider",
     "pluralName": "sliders",
-    "displayName": "slider"
+    "displayName": "slider",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "tittle": {
+    "title": {
       "type": "string"
     },
     "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     }
   }
 }

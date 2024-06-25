@@ -12,6 +12,7 @@ import './style.css';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import fetchData from '../../../Utils/FetchData';
+import { Box, Typography } from '@mui/material';
 
 export default function Banner() {
     const [slide, setSlide] = useState()
@@ -20,16 +21,22 @@ export default function Banner() {
     const onAutoplayTimeLeft = (s, time, progress) => {
         progressCircle.current.style.setProperty('--progress', 1 - progress);
         progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
-        
+
     };
-    useEffect(()=>{
-        (async()=>{
-            const res=await fetchData('sliders?populate=*')
+    useEffect(() => {
+        (async () => {
+            const res = await fetchData('sliders?populate=*')
             return setSlide(res.data)
         })()
-    },[])
+    }, [])
     const items = slide?.map((e, index) => <SwiperSlide key={index}>
-        <img src={import.meta.env.VITE_BASE_URL+} alt=''/>
+        <img src={import.meta.env.VITE_BASE_URL + e?.attributes?.images?.data[0]?.attributes?.url} alt={e?.attributes?.title} />
+        <Box>
+            <Typography component={'h3'} variant='h4'>
+                {e?.attributes?.title}
+            </Typography>
+        </Box>
+
     </SwiperSlide>)
     return (
         <>

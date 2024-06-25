@@ -16,7 +16,7 @@ export default function Navbar() {
                 <Button variant='text'><Link style={{ color: '#878585' }} to={'/'}>Home</Link></Button>
                 <Button variant='text'><Link style={{ color: '#878585' }} to={'/woman-products/all-woman-product/all-category'}>Woman</Link></Button>
                 <Button variant='text'><Link style={{ color: '#878585' }} to={'/man-products/all-man-product/all-category'}>Man</Link></Button>
-                <Button variant='text'><Link style={{ color: '#878585' }} to={'/casual-products'}>Casual Style</Link></Button>
+                {/* <Button variant='text'><Link style={{ color: '#878585' }} to={'/casual-products'}>Casual Style</Link></Button> */}
                 <Button variant='text'><Link style={{ color: '#878585' }} to={'/about'}>About</Link></Button>
             </Stack>
             <Stack component={'div'} direction={'row'}>

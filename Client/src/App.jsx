@@ -22,10 +22,9 @@ export default function App() {
       <Box minHeight={'80vh'}>
         <Routes>
          <Route exact path='/' element={<Home/>}/>
-         <Route path='/woman-products/:categoryId/:categoryName' element={<WomanProducts/>}/>
-         <Route path='/man-products/:categoryId/:categoryName' element={<ManProducts/>}/>
-         <Route path='/casual-products' element={<CasualProducts/>}/>
-         <Route path='/product-details' element={<ProductDetails/>}/>
+         <Route path='/woman/:categoryId/:categoryName' element={<WomanProducts/>}/>
+         <Route path='/man/:categoryId/:categoryName' element={<ManProducts/>}/>
+         <Route path='/product-details/:id/:name' element={<ProductDetails/>}/>
          <Route path='/auth' element={!token?<Auth/>:<Navigate to={'/'}/>}/>
          <Route path='cart' element={token?<Cart/>:<Navigate to={'/auth'}/>}/>
          <Route path='about' element={<About/>}/>
