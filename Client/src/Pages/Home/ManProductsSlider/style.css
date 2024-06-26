@@ -1,0 +1,20 @@
+.catProductsSlider {
+    width: 100%;
+    height: 100%;
+    /* margin:auto 20px !important; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .catProductsSlider .swiper-slide{
+    text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+ 
+  }
+  /* .catProductsSlider .swiper-button-prev, .swiper-button-next{
+    margin: 0 10px;
+
+  } */

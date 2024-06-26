@@ -16,7 +16,7 @@ import Productcard from '../../../Components/Productcard';
 import fetchData from '../../../Utils/FetchData';
 export default function WomanProductsSlider() {
     const [product, setProduct] = useState()
-    const [category, setCategory] = useState('dress')
+    const [category, setCategory] = useState('top')
     const [womanPic, setWomanPic] = useState()
 
     useEffect(() => {

@@ -5,6 +5,9 @@ import Collection from './Collection'
 import TrendingOffer from './TrendingOffer'
 import TrendingItems from './TrendingItems'
 import WomanProductsSlider from './WomanProductsSlider'
+import Intruduce from './Intruduce'
+import ManProductsSlider from './ManProductsSlider'
+import Services from './Services'
 
 
 export default function Home() {
@@ -12,14 +15,17 @@ export default function Home() {
   return (
     <>
     <Box sx={{minHeight:"90vh"}}>
-      
-    </Box>
     <Banner/>
     {/* collection section */}
     <Collection/>
     <TrendingOffer/>
     <TrendingItems/>
     <WomanProductsSlider/>
+    <Intruduce/>
+    <ManProductsSlider/>
+    <Services/>
+    </Box>
+   
 
     </>
   )

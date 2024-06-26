@@ -10,6 +10,6 @@
   font-family: "Libre_Baskerville";
   src: url('../src/font/LibreBaskerville-Bold.ttf') format('ttf'),
     url('../src/font/LibreBaskerville-Bold.woff') format('woff'),
-     url()
+     url('../src/font/LibreBaskerville-Bold.woff2') format('woff2')
 
 }
