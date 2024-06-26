@@ -20,7 +20,7 @@ export default function Productcard({name, img, price, discount ,id}) {
                     sx={{objectFit:"fill"}}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h7" component="div" my={'10px'}>
+                    <Typography gutterBottom variant="h8" component="div" my={'10px'} sx={{textAlign:"left",fontSize:'0.7em'}}>
                         {name}
                     </Typography>
                     <Stack direction={'row'} justifyContent={'left'} alignItems={'center'} gap={'40px'} my={'10px'}>

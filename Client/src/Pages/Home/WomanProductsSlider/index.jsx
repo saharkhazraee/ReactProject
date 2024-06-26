@@ -1,71 +1,93 @@
 import { Button, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import fetchData from '../../../Utils/FetchData'
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 import './style.css';
 // import required modules
-import { FreeMode, Pagination } from 'swiper/modules';
-import fetchData from '../../../Utils/FetchData';
+import { FreeMode ,Navigation} from 'swiper/modules';
 import Productcard from '../../../Components/Productcard';
+import fetchData from '../../../Utils/FetchData';
 export default function WomanProductsSlider() {
     const [product, setProduct] = useState()
-    const [category, setCategory] = useState()
+    const [category, setCategory] = useState('dress')
+    const [womanPic, setWomanPic] = useState()
 
     useEffect(() => {
         (async () => {
-            const res = await fetchData(`women?populate=*&filters[categories][$eq]=${category}`)
-            const menRes = await fetchData(`men?populate=*&filters[categories][$eq]=${category}`)
-            return (setProduct([...res.data, ...menRes.data]))
+            const res = await fetchData(`women?populate=*&[filters][categories][name][$containsi]=${category}&pagination[page]=1&pagination[pageSize]=4`)
+            // const menRes = await fetchData(`men?populate=*&[filters][categories][name][$containsi]=${category}&pagination[page]=1&pagination[pageSize]=3`)
+            const womanRes = await fetchData('home-images/1?populate=*')
+            setProduct(res.data)
+            setWomanPic(womanRes.data)
         })()
     }, [category])
+console.log(category)
 
+    // start slider
     const items = product?.map((e, index) =>
-     <SwiperSlide>
-        <Productcard key={index} id={e?.id}
-            img={import.meta.env.VITE_BASE_URL + e?.attributes?.images?.data[0]?.attributes?.url} name={e?.attributes?.name}
-            price={e?.attributes?.price} discount={e?.attributes?.discount} />
-    </SwiperSlide>)
+
+        <SwiperSlide>
+            <Productcard key={index} id={e?.id}
+                img={import.meta.env.VITE_BASE_URL + e?.attributes?.images?.data[0]?.attributes?.url} name={e?.attributes?.name}
+                price={e?.attributes?.price} discount={e?.attributes?.discount} />
+        </SwiperSlide>)
+
     return (
-        <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} sx={{ width: '100%', height: "90vh", margin: 'auto 5%' }}>
-            <Stack sx={{ width: '30%', position: 'relative', overflow: 'hidden' }}>
-                <img src='' alt='' style={{ borderRadius: "10px" }} />
-                <Stack justifyContent={'center'} alignItems={'center'} gap={'50px'} sx={{ width: "100%", position: 'absolute' }}>
-                    <Stack sx={{ width: "100%", bgcolor: '#D9D9D9', opacity: '10%' }}>
-                        <Typography variant='h6' component={'h1'} sx={{ color: 'white' }}>WOMEN'S</Typography>
-                    </Stack>
-                    <Button><Link to={`/woman/${id}/${name.replaceAll(' ', '-')}`}>show more</Link></Button>
-                </Stack>
-                <Stack sx={{ width: '69%' }}>
-                    <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} sx={{ width: '70%' }}>
-                        <Button variant='text' onClick={() => setCategory('top')}>Top</Button>
-                        <Button variant='text' onClick={() => setCategory('pans')}>Pans</Button>
-                        <Button variant='text' onClick={() => setCategory('dress')}>Dress</Button>
-                        <Button variant='text' onClick={() => setCategory('T-shirt')}>T-shirt</Button>
+        <Stack direction={'row'} justifyContent={'center'} alignItems={'center'} gap={'30px'} sx={{width:"83%", height: "70vh", margin: '5% auto',my:'10%' }}>
+            {/* left side of Slider */}
+            <Stack sx={{ width: '28%', height: '100%', position: 'relative', overflow: 'hidden', justifyContent: 'center', alignItems: 'center' }}>
+                <img src={import.meta.env.VITE_BASE_URL + womanPic?.attributes?.image?.data?.attributes?.url} alt=''
+                    style={{ borderRadius: "10px", width: '100%', height: '100%',objectFit:'cover' }} />
 
-                    </Stack>
-                    <Stack justifyContent={'center'} alignItems={'center'} sx={{ margin: 'auto 5%', my: '5%' }}>
-                        <Swiper
-                            slidesPerView={2}
-                            spaceBetween={20}
-                            freeMode={true}
-                            modules={[FreeMode]}
-                            className="offerSlider"
-                        >
+                <Stack justifyContent={'center'} alignItems={'center'} gap={'50px'} sx={{
+                    width: "100%", position: 'absolute'
+                    , zIndex: 10000
+                }}>
 
-                            {items}
-                        </Swiper>
+                    <Stack justifyContent={'center'} alignItems={'center'} gap={'50px'} sx={{ width: "100%", position: 'relative' }}>
+                        <Stack sx={{ width: "100%", bgcolor: '#D9D9D9', opacity: "30%", height: '100px' }}>
+
+                        </Stack>
+                        <Typography variant='h5' component={'h1'} sx={{ color: 'white', position: 'absolute', fontWeight: 'bold' }}>WOMEN'S</Typography>
+                        {/* <Button><Link to={`/woman/${product?.id}/${product?.attributes?.name.replaceAll(' ', '-')}`}>show more</Link></Button> */}
                     </Stack>
 
                 </Stack>
             </Stack>
+            {/* right side of slider */}
+            <Stack sx={{ width: '60%',height:"70%" }} justifyContent={'center'} alignItems={'center'}  >
+                <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} gap={'10px'} sx={{ width: '50%',margin:"1% auto"}}>
+                    <Button variant='text' sx={{ fontSize: '1.2em', color: `${category}` == 'top' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('top')}>Top</Button>
+                    <Button variant='text' sx={{ fontSize: '1.2em', color: `${category}` == 'pans' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('pans')}>Pans</Button>
+                    <Button variant='text' sx={{ fontSize: '1.2em', color: `${category} ` == 'dress' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('dress')} >Dress</Button>
+                    <Button variant='text'  sx={{ fontSize: '1.2em', color: `${category}` == 'T-shirt' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('T-shirt')}>T-shirt</Button>
 
+                </Stack>
+                <Stack justifyContent={'center'} alignItems={'center'} sx={{width:'100%',margin:"1% 1%"}} >
+                    <Swiper
+                        slidesPerView={2}
+                        navigation={true}
+                        spaceBetween={5}
+                        freeMode={true}
+                        modules={[FreeMode,Navigation]}
+                        className="catProductsSlider"
+                    >
 
+                        {items}
+                    </Swiper>
+                </Stack>
+
+            </Stack>
         </Stack>
+
+
+
     )
 }
