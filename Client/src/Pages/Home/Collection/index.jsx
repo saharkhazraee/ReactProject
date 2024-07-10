@@ -2,11 +2,11 @@ import { Box, Button, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import fetchData from '../../../Utils/FetchData'
 import { Link } from 'react-router-dom'
-export const CollectionCard = ({ id, name, img }) => {
+export const CollectionCard = ({ name, img }) => {
     return (
         <Box sx={{
             width: "30%", height: '100%',
-            borderRadius: '10px',
+            borderRadius: '5px',
             overflow: 'hidden',
             position: 'relative',
             boxShadow: '0 0 20px 5px rgba(0,0,0,.15)',
@@ -19,7 +19,7 @@ export const CollectionCard = ({ id, name, img }) => {
                 filter: 'blur(5px)'
             },
             '& > a': {
-                fontSize: '4em',
+                fontSize: '3em',
                 color: 'white',
                 textShadow: '0 5px 10px rgba(0,0,0,.3)',
                 position: 'absolute',
@@ -36,7 +36,7 @@ export const CollectionCard = ({ id, name, img }) => {
 
         >
             <img src={img} alt={name} />
-            <Link to={`/${name}/${id}/all-product/all-category`} >
+            <Link to={`/${name.toLowerCase()}/all-${name.toLowerCase()}-product/all-category`} >
                 {name}
             </Link>
 
@@ -57,17 +57,18 @@ export default function Collection() {
         name={e?.attributes?.name}
         id={e?.id}
     />)
-    
+
     return (
-        <Stack justifyContent={'center'} alignItems={'center'} gap={'20px'} sx={{margin:'4% 0'}}>
-            <Typography variant='h3' component={'h1'}>
-                <Typography variant='h3' component={'span'} sx={{color:"#8B4513"}}>OUR  </Typography>
+        <Stack justifyContent={'center'} alignItems={'center'} gap={'20px'} sx={{margin:'4% 0',marginTop:'8%'}}>
+            <Typography variant='h4' component={'h1'} sx={{fontFamily:'asns',fontSize:{xs:'2rem',md:'3rem'}}}>
+                <Typography variant='h4' component={'span'} sx={{color:"#8B4513",fontFamily:'asns',fontSize:{xs:'2rem',md:'3rem'}}}>OUR  </Typography>
                  COLLECTION
             </Typography>
             <Stack direction={'row'} justifyContent={'center'} alignItems={'center'} gap={'40px'} flexWrap={'wrap'}
-                sx={{ padding: '20px 2%', width: "100%", height: '53vh' }}>
+                sx={{ padding: '20px 2%', width: "100%", height: '70vh' }}>
                 {items}
             </Stack>
         </Stack>
     )
 }
+

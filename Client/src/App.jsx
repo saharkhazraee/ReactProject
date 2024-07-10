@@ -14,6 +14,7 @@ import Auth from './Pages/Auth'
 import About from './Pages/About'
 import Search from './Pages/Search'
 import NotFound from './Pages/NotFound'
+import WomanProductDetails from './Pages/WomanProductDetails'
 export default function App() {
   const {token}=useSelector(state=>state.auth)
   return (
@@ -25,10 +26,11 @@ export default function App() {
          <Route path='/woman/:categoryId/:categoryName' element={<WomanProducts/>}/>
          <Route path='/man/:categoryId/:categoryName' element={<ManProducts/>}/>
          <Route path='/product-details/:id/:name' element={<ProductDetails/>}/>
+         <Route path='/woman-product-details/:id/:name' element={<WomanProductDetails/>}/>
          <Route path='/auth' element={!token?<Auth/>:<Navigate to={'/'}/>}/>
-         <Route path='cart' element={token?<Cart/>:<Navigate to={'/auth'}/>}/>
-         <Route path='about' element={<About/>}/>
-         <Route path='search/:query' element={<Search/>}/>
+         <Route path='/cart' element={token?<Cart/>:<Navigate to={'/auth'}/>}/>
+         <Route path='/about' element={<About/>}/>
+         <Route path='/search/:query' element={<Search/>}/>
          <Route path='*' element={<NotFound/>}/>
         </Routes>
       </Box>

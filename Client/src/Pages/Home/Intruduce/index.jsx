@@ -10,7 +10,7 @@ export default function Intruduce() {
             return setIntruduce(res.data)
         })()
     },[])
-    console.log(intruduce)
+    
     return (
         <Box sx={{width:'100%',height:"50vh"}}>
             <video controls style={{width:"100%",height:'100%'}}>

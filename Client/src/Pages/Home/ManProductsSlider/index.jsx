@@ -39,13 +39,13 @@ console.log(category)
         </SwiperSlide>)
 
     return (
-        <Stack direction={'row'} justifyContent={'center'} alignItems={'center'} gap={'30px'} sx={{width:"83%", height: "70vh", margin: '5% auto',my:'10%' }}>
+        <Stack direction={'row'} justifyContent={'center'} alignItems={'center'} gap={'30px'} sx={{width:"83%", height: "75vh", margin: '5% auto',my:'10%' }}>
             {/* left side of Slider */}
-            <Stack sx={{ width: '60%',height:"70%" }} justifyContent={'center'} alignItems={'center'}  >
+            <Stack sx={{ width: '70%',height:"70%" }} justifyContent={'center'} alignItems={'center'}  >
                 <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} gap={'10px'} sx={{ width: '50%',margin:"1% auto"}}>
                     <Button variant='text' sx={{ fontSize: '1.2em', color: `${category}` == 'suit' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('suit')}>suit</Button>
                     <Button variant='text' sx={{ fontSize: '1.2em', color: `${category}` == 'pans' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('pans')}>Pans</Button>
-                    <Button variant='text' sx={{ fontSize: '1.2em', color: `${category} ` == 'shirt' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('shirt')} >Dress</Button>
+                    <Button variant='text'  sx={{ fontSize: '1.2em', color: `${category}` == 'shirt' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('shirt')}>Shirt</Button>
                     <Button variant='text'  sx={{ fontSize: '1.2em', color: `${category}` == 'T-shirt' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('T-shirt')}>T-shirt</Button>
 
                 </Stack>
@@ -65,7 +65,7 @@ console.log(category)
 
             </Stack>
             {/* right side of slider */}
-            <Stack sx={{ width: '28%', height: '100%', position: 'relative', overflow: 'hidden', justifyContent: 'center', alignItems: 'center' }}>
+            <Stack sx={{ width: '29%', height: '100%', position: 'relative', overflow: 'hidden', justifyContent: 'center', alignItems: 'center' }}>
                 <img src={import.meta.env.VITE_BASE_URL + manPic?.attributes?.image?.data?.attributes?.url} alt=''
                     style={{ borderRadius: "10px", width: '100%', height: '100%',objectFit:'cover' }} />
 
@@ -78,7 +78,7 @@ console.log(category)
                         <Stack sx={{ width: "100%", bgcolor: '#D9D9D9', opacity: "30%", height: '100px' }}>
 
                         </Stack>
-                        <Typography variant='h5' component={'h1'} sx={{ color: 'white', position: 'absolute', fontWeight: 'bold' }}>WOMEN'S</Typography>
+                        <Typography variant='h5' component={'h1'} sx={{ color: 'white', position: 'absolute', fontWeight: 'bold' }}>MEN'S</Typography>
                         {/* <Button><Link to={`/woman/${product?.id}/${product?.attributes?.name.replaceAll(' ', '-')}`}>show more</Link></Button> */}
                     </Stack>
 

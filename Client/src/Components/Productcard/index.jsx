@@ -10,14 +10,14 @@ import { Stack } from '@mui/system';
 import { Link } from 'react-router-dom';
 export default function Productcard({name, img, price, discount ,id}) {
     return (
-        <Link style={{ display: 'inline-block', width: '250px', height: "350px" }} to={`/product-details/${id}/${name.replaceAll(' ','-')}`}>
-            <Card sx={{ Width: 250, height: 350}}>
+        <Link style={{ display: 'inline-block', width:{xs:'250px',md: '300px'}, height:{xs:'380px',md: '400px'} }} to={`/product-details/${id}/${name.replaceAll(' ','-')}`}>
+            <Card sx={{ width:{xs:'250px',md: '300px'}, height:{xs:'380px',md: '400px'}}}>
                 <CardMedia
                     component="img"
                     alt="green iguana"
-                    height="60%"
+                    height="70%"
                     image={img}
-                    sx={{objectFit:"fill"}}
+                    sx={{objectFit:"cover"}}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h8" component="div" my={'10px'} sx={{textAlign:"left",fontSize:'0.7em'}}>

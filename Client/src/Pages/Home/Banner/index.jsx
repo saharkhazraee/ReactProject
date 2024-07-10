@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import './style.css';
+import './banner.css';
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -32,7 +32,7 @@ export default function Banner() {
     const items = slide?.map((e, index) => <SwiperSlide key={index}>
         <img src={import.meta.env.VITE_BASE_URL + e?.attributes?.images?.data[0]?.attributes?.url} alt={e?.attributes?.title} />
         <Box>
-            <Typography component={'h3'} variant='h4'>
+            <Typography component={'h3'} variant='h4' sx={{fontSize:{xs:'2rem !important',md:'2.5rem  !important'}}}>
                 {e?.attributes?.title}
             </Typography>
         </Box>
