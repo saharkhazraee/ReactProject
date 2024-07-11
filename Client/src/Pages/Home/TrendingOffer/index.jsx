@@ -43,25 +43,18 @@ export default function TrendingOffer() {
             </Typography>
             <Stack justifyContent={'center'} alignItems={'center'} sx={{width:'100%'}}>
                 <Swiper
-                    // slidesPerView={4}
+                    
                     breakpoints={{
-                        // when window width is >= 320px
-                        320: {
-                            slidesPerView: 1,
-                        },
-                        // when window width is >= 480px
-                        480: {
-                            slidesPerView: 2,
-                        },
-                        // when window width is >= 640px
+                  
+                        // when window width is >= 720px
                         720: {
                             slidesPerView: 2,
                         },
-                        // when window width is >= 768px
+                        // when window width is >= 800px
                         800: {
                             slidesPerView: 3,
                         },
-                        // when window width is >= 1024px
+                        // when window width is >= 1400px
                         1400: {
                             slidesPerView: 4,
                         },

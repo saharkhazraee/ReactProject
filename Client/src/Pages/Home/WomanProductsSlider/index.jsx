@@ -1,4 +1,4 @@
-import { Button, Stack, Typography } from '@mui/material'
+import { Button, Stack, Typography, useMediaQuery } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -19,7 +19,7 @@ export default function WomanProductsSlider() {
     const [product, setProduct] = useState()
     const [category, setCategory] = useState('top')
     const [womanPic, setWomanPic] = useState()
-    
+    const isLargeScreen = useMediaQuery('(min-width:1350px)');
     useEffect(() => {
         (async () => {
             const res = await fetchData(`women?populate=*&[filters][categories][name][$containsi]=${category}&pagination[page]=1&pagination[pageSize]=4`)
@@ -29,7 +29,7 @@ export default function WomanProductsSlider() {
             setWomanPic(womanRes.data)
         })()
     }, [category])
-console.log(product)
+
 
     // start slider
     const items = product?.map((e, index) =>
@@ -41,9 +41,9 @@ console.log(product)
         </SwiperSlide>)
 
     return (
-        <Stack direction={'row'} justifyContent={'center'} alignItems={'center'} gap={'30px'} sx={{ width: "83%", height: "70vh", margin: '5% auto', my: '10%' }}>
+        <Stack direction={'row'} justifyContent={'center'} alignItems={'center'} gap={'30px'} sx={{ width: { xs: '98%', lg: '83%' }, height: "70vh", margin: '5% auto', my: '10%' }}>
             {/* left side of Slider */}
-            <Stack sx={{ width: '30%', height: '100%', position: 'relative', overflow: 'hidden', justifyContent: 'center', alignItems: 'center' }}>
+            <Stack sx={{ width: '30%', height:{xs:'80%', lg:'100%'}, position: 'relative', overflow: 'hidden', justifyContent: 'center', alignItems: 'center' }}>
                 <img src={import.meta.env.VITE_BASE_URL + womanPic?.attributes?.image?.data?.attributes?.url} alt=''
                     style={{ borderRadius: "10px", width: '100%', height: '100%', objectFit: 'cover' }} />
 
@@ -71,7 +71,7 @@ console.log(product)
             </Stack>
             {/* right side of slider */}
             <Stack sx={{ width: '70%', height: "70%" }} justifyContent={'center'} alignItems={'center'}  >
-                <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} gap={'10px'} sx={{ width: '50%', margin: "1% auto" }}>
+                <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} gap={'10px'} sx={{ width:{lg:'50%'} , margin: "1% auto" }}>
 
                     <Button variant='text' sx={{ fontSize: '1.2em', color: `${category}` == 'top' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('top')}>Top</Button>
                     <Button variant='text' sx={{ fontSize: '1.2em', color: `${category}` == 'pans' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('pans')}>Pans</Button>
@@ -82,7 +82,7 @@ console.log(product)
                 <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: '100%', margin: "1% 1%" }} >
                     <Swiper
                         slidesPerView={2}
-                        navigation={true}
+                        navigation={isLargeScreen ? true : false}
                         spaceBetween={2}
                         freeMode={true}
                         modules={[FreeMode, Navigation]}

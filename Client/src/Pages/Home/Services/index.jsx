@@ -6,7 +6,7 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PaymentIcon from '@mui/icons-material/Payment';
 export default function Services() {
     return (
-        <Stack sx={{ margin: "5% ",marginTop:'12% !important', height: '60vh', width: "90%" }} justifyContent={"center"} alignItems={'center'} gap={'10px'} direction={'row'}>
+        <Stack sx={{ margin:{xs:'5% auto',lg: "5% "},marginTop:'12% !important', height: {xs:'75vh',lg:'68vh'}, width: "90%" }} justifyContent={"center"} alignItems={'center'} gap={'10px'} direction={'row'}>
             <Stack justifyContent={"center"} alignItems={'center'} gap={'40px'} sx={{ width: '25%', height: '100%', border: '10px solid #F2F2F2', marginRight: '2%', padding: '10px' }} >
                 <TaskAltIcon sx={{ color: '#8B4513', fontSize: '3.5em' }} />
                 <Typography variant='h6' component={'h2'} sx={{ color: '#3E3E3E', textAlign: 'center' }}>
@@ -24,7 +24,7 @@ export default function Services() {
                     sx={{ width: '100%', height: '48%', border: '10px solid #F2F2F2', mx: '2%', p: '10px' }}>
                     <Box><LocalPhoneIcon sx={{ color: '#8B4513', fontSize: '3.1em' }} /></Box>
                     <Box>
-                        <Typography variant='h6' component={'h2'} sx={{ color: '#3E3E3E', textAlign: 'center' }}>
+                        <Typography variant='h6' component={'h2'} sx={{ color: '#3E3E3E', textAlign: 'left' }}>
                             24/7 Online Service
                         </Typography>
                         <Typography variant='body2' component={'p'} sx={{ color: '#757575' }}>
@@ -36,7 +36,7 @@ export default function Services() {
                     sx={{ width: '100%', height: '48%', border: '10px solid #F2F2F2', mx: '2%', p: '10px' }}>
                     <Box><LocalShippingIcon sx={{ color: '#8B4513', fontSize: '3.1em' }} /></Box>
                     <Box>
-                        <Typography variant='h4' component={'h2'} sx={{ color: '#3E3E3E' }}>
+                        <Typography variant='h6' component={'h2'} sx={{ color: '#3E3E3E' }}>
                             Fast Delivery
                         </Typography>
                         <Typography variant='body2' component={'p'} sx={{ color: '#757575' }}>

@@ -1,4 +1,4 @@
-import { Button, Stack, Typography } from '@mui/material'
+import { Button, Stack, Typography, useMediaQuery } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -11,14 +11,14 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './style.css';
 // import required modules
-import { FreeMode ,Navigation} from 'swiper/modules';
+import { FreeMode, Navigation } from 'swiper/modules';
 import Productcard from '../../../Components/Productcard';
 import fetchData from '../../../Utils/FetchData';
 export default function ManProductsSlider() {
     const [product, setProduct] = useState()
     const [category, setCategory] = useState('suit')
     const [manPic, setManPic] = useState()
-
+    const isLargeScreen = useMediaQuery('(min-width:1350px)');
     useEffect(() => {
         (async () => {
             const res = await fetchData(`men?populate=*&[filters][categories][name][$containsi]=${category}&pagination[page]=1&pagination[pageSize]=3`)
@@ -27,7 +27,7 @@ export default function ManProductsSlider() {
             setManPic(manRes.data)
         })()
     }, [category])
-console.log(category)
+    console.log(category)
 
     // start slider
     const items = product?.map((e, index) =>
@@ -39,23 +39,23 @@ console.log(category)
         </SwiperSlide>)
 
     return (
-        <Stack direction={'row'} justifyContent={'center'} alignItems={'center'} gap={'30px'} sx={{width:"83%", height: "75vh", margin: '5% auto',my:'10%' }}>
+        <Stack direction={'row'} justifyContent={'center'} alignItems={'center'} gap={'30px'} sx={{ width: { xs: '98%', lg: '83%' }, height: "75vh", margin: '5% auto' , my: '10%' }}>
             {/* left side of Slider */}
-            <Stack sx={{ width: '70%',height:"70%" }} justifyContent={'center'} alignItems={'center'}  >
-                <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} gap={'10px'} sx={{ width: '50%',margin:"1% auto"}}>
+            <Stack sx={{ width:  '70%' , height: "70%" }} justifyContent={'center'} alignItems={'center'}  >
+                <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} gap={'10px'} sx={{ width: { lg: '50%' }, margin: "1% auto" }}>
                     <Button variant='text' sx={{ fontSize: '1.2em', color: `${category}` == 'suit' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('suit')}>suit</Button>
                     <Button variant='text' sx={{ fontSize: '1.2em', color: `${category}` == 'pans' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('pans')}>Pans</Button>
-                    <Button variant='text'  sx={{ fontSize: '1.2em', color: `${category}` == 'shirt' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('shirt')}>Shirt</Button>
-                    <Button variant='text'  sx={{ fontSize: '1.2em', color: `${category}` == 'T-shirt' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('T-shirt')}>T-shirt</Button>
+                    <Button variant='text' sx={{ fontSize: '1.2em', color: `${category}` == 'shirt' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('shirt')}>Shirt</Button>
+                    <Button variant='text' sx={{ fontSize: '1.2em', color: `${category}` == 'T-shirt' ? '#8B4513' : '#1D1D1D' }} onClick={() => setCategory('T-shirt')}>T-shirt</Button>
 
                 </Stack>
-                <Stack justifyContent={'center'} alignItems={'center'} sx={{width:'100%',margin:"1% 1%"}} >
+                <Stack justifyContent={'center'} alignItems={'center'} sx={{ width: '100%', margin: "1% 1%" }} >
                     <Swiper
                         slidesPerView={2}
-                        navigation={true}
+                        navigation={isLargeScreen ? true : false}
                         spaceBetween={5}
                         freeMode={true}
-                        modules={[FreeMode,Navigation]}
+                        modules={[FreeMode, Navigation]}
                         className="catProductsSlider"
                     >
 
@@ -65,9 +65,10 @@ console.log(category)
 
             </Stack>
             {/* right side of slider */}
-            <Stack sx={{ width: '29%', height: '100%', position: 'relative', overflow: 'hidden', justifyContent: 'center', alignItems: 'center' }}>
+            <Stack sx={{ width:  '29%' , height:{xs:'80%', lg:'100%'}, position: 'relative', overflow: 'hidden',
+             justifyContent: 'center', alignItems: 'center' }}>
                 <img src={import.meta.env.VITE_BASE_URL + manPic?.attributes?.image?.data?.attributes?.url} alt=''
-                    style={{ borderRadius: "10px", width: '100%', height: '100%',objectFit:'cover' }} />
+                    style={{ borderRadius: "10px", width: '100%', height: '100%', objectFit: 'cover' }} />
 
                 <Stack justifyContent={'center'} alignItems={'center'} gap={'50px'} sx={{
                     width: "100%", position: 'absolute'
@@ -86,7 +87,7 @@ console.log(category)
             </Stack>
 
 
-            
+
         </Stack>
 
 

@@ -19,7 +19,7 @@ export const CollectionCard = ({ name, img }) => {
                 filter: 'blur(5px)'
             },
             '& > a': {
-                fontSize: '3em',
+                fontSize: {xs:'2rem',md:'2.5rem',lg:'3rem'},
                 color: 'white',
                 textShadow: '0 5px 10px rgba(0,0,0,.3)',
                 position: 'absolute',
@@ -60,12 +60,12 @@ export default function Collection() {
 
     return (
         <Stack justifyContent={'center'} alignItems={'center'} gap={'20px'} sx={{margin:'4% 0',marginTop:'8%'}}>
-            <Typography variant='h4' component={'h1'} sx={{fontFamily:'asns',fontSize:{xs:'2rem',md:'3rem'}}}>
-                <Typography variant='h4' component={'span'} sx={{color:"#8B4513",fontFamily:'asns',fontSize:{xs:'2rem',md:'3rem'}}}>OUR  </Typography>
+            <Typography variant='h4' component={'h1'} sx={{fontFamily:'asns',fontSize:{xs:'2rem',md:'2.5rem',lg:'3rem'}}}>
+                <Typography variant='h4' component={'span'} sx={{color:"#8B4513",fontFamily:'asns',fontSize:{xs:'2rem',md:'2.5rem',lg:'3rem'}}}>OUR  </Typography>
                  COLLECTION
             </Typography>
             <Stack direction={'row'} justifyContent={'center'} alignItems={'center'} gap={'40px'} flexWrap={'wrap'}
-                sx={{ padding: '20px 2%', width: "100%", height: '70vh' }}>
+                sx={{ padding: '20px 2%', width: "100%", height:{sm:'50vh',md:'60vh',lg:'70vh'}  }}>
                 {items}
             </Stack>
         </Stack>

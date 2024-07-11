@@ -64,8 +64,8 @@ export default function Search() {
           }
         />
       </Box>
-      <Stack justifyContent={'center'} alignItems={'center'} gap={'20px'} sx={{ margin: '4% 0' ,width:"100%"}}>
-        <Collection/>
+      <Stack justifyContent={'center'} alignItems={'center'} gap={'20px'} sx={{ margin: '4% 0', width: "100%" }}>
+        <Collection />
       </Stack>
       <Stack justifyContent={'space-between'} alignItems={'center'} gap={'20px'} spacing={2} sx={{ width: '90%', margin: '0 auto' }} >
         {womanResultSearch != '' && <Box pt={'40px'}>
@@ -80,10 +80,12 @@ export default function Search() {
         </Box>}
 
       </Stack>
-
+      {(womanResultSearch != '' || manResultSearch != '')&&
       <Box>
-        <IntrestingItems searchInp={searchInp} query={query} />
-      </Box>
+      <IntrestingItems searchInp={searchInp} query={query} />
+    </Box>
+      }
+      
 
     </Box >
   )
